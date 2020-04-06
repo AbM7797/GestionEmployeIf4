@@ -15,6 +15,11 @@
 
 </head>
 <body>
+<%
+    if(session.getAttribute("user")==null){
+        response.sendRedirect("index.jsp");
+    }
+%>
 <header role="banner">
     <nav class="naviguer" role="navigation">
         <div class="inner">

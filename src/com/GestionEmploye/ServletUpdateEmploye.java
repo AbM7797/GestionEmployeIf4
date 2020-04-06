@@ -20,9 +20,21 @@ public class ServletUpdateEmploye extends HttpServlet {
         String post = request.getParameter("post");
         String oldid = request.getParameter("oldid");
         String newId = request.getParameter("id");
-        Employe employe = new Employe(Integer.parseInt(oldid));
-        employe.updateEmploye(nom,prenom,sexe,post,adresse,email,Integer.parseInt(age),Integer.parseInt(newId));
-        response.sendRedirect("home.jsp");
+        Employe test = new Employe().getEmploye(Integer.parseInt(newId));
+        Boolean userExist = false;
+
+        if(test==null || oldid.equals(newId) ){
+            userExist = false;
+            Employe employe = new Employe(Integer.parseInt(oldid));
+            employe.updateEmploye(nom,prenom,sexe,post,adresse,email,Integer.parseInt(age),Integer.parseInt(newId));
+            response.sendRedirect("home.jsp");
+        }else{
+            userExist = true;
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ajouter.jsp");
+            request.setAttribute("userExist",userExist);
+            rd.include(request, response);
+        }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

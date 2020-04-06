@@ -158,9 +158,10 @@ public class Employe implements java.io.Serializable {
                 employe.setEmail(resultSet.getString("email"));
                 employe.setPost(resultSet.getString("post"));
                 employe.setId(id);
+                return employe;
             }
             con.close();
-            return employe;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -4,13 +4,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Document</title>
 </head>
 <body>
+<%
+    if(session.getAttribute("user")==null){
+        response.sendRedirect("index.jsp");
+    }
+%>
 <header role="banner">
     <nav class="naviguer" role="navigation">
         <div class="inner">
@@ -40,6 +46,9 @@
 
     </h1>
     <div >
+        <c:if test="${userExist==true}">
+            <p style="color: #792700">User deja existant.</p>
+        </c:if>
         <c:if test="${employe!=null}">
             <form action="ServletUpdateEmploye" method="post">
         </c:if>

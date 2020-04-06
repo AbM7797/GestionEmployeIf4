@@ -22,9 +22,9 @@ public class ServletLogin extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", "Admin");
             //setting session to expiry in 30 mins
-            session.setMaxInactiveInterval(60*30);
+            session.setMaxInactiveInterval(30*60);
             Cookie userName = new Cookie("user", user);
-            userName.setMaxAge(60*30);
+            userName.setMaxAge(30*60);
             response.addCookie(userName);
             response.sendRedirect("home.jsp");
         }else{

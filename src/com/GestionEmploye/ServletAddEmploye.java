@@ -1,5 +1,6 @@
 package com.GestionEmploye;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,9 +21,20 @@ public class ServletAddEmploye extends HttpServlet {
         String adresse = request.getParameter("adresse");
         String post = request.getParameter("post");
         String id = request.getParameter("id");
-        Employe employe = new Employe(nom,prenom, Integer.parseInt(age),Integer.parseInt(id),sexe,email,adresse,post);
-        employe.addEmploye();
-        response.sendRedirect("home.jsp");
+        Employe test = new Employe().getEmploye(Integer.parseInt(id));
+        Boolean userExist = false;
+        if(test==null){
+            userExist = false;
+            Employe employe = new Employe(nom,prenom, Integer.parseInt(age),Integer.parseInt(id),sexe,email,adresse,post);
+            employe.addEmploye();
+            response.sendRedirect("home.jsp");
+        }else{
+            userExist = true;
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ajouter.jsp");
+            request.setAttribute("userExist",userExist);
+            rd.include(request, response);
+        }
+
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
