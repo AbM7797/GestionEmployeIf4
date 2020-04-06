@@ -22,8 +22,13 @@ public class ServletUpdateEmploye extends HttpServlet {
         String newId = request.getParameter("id");
         Employe test = new Employe().getEmploye(Integer.parseInt(newId));
         Boolean userExist = false;
-
-        if(test==null || oldid.equals(newId) ){
+        Boolean CINVerif = false;
+        if(newId.length()!=8){
+            CINVerif = true;
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ajouter.jsp");
+            request.setAttribute("CINVerif",CINVerif);
+            rd.include(request, response);
+        } else if(test==null || oldid.equals(newId) ){
             userExist = false;
             Employe employe = new Employe(Integer.parseInt(oldid));
             employe.updateEmploye(nom,prenom,sexe,post,adresse,email,Integer.parseInt(age),Integer.parseInt(newId));

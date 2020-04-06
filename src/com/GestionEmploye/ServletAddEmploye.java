@@ -23,7 +23,14 @@ public class ServletAddEmploye extends HttpServlet {
         String id = request.getParameter("id");
         Employe test = new Employe().getEmploye(Integer.parseInt(id));
         Boolean userExist = false;
-        if(test==null){
+        System.out.println(id.length());
+        Boolean CINVerif = false;
+        if(id.length()!=8){
+            CINVerif = true;
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ajouter.jsp");
+            request.setAttribute("CINVerif",CINVerif);
+            rd.include(request, response);
+        } else if(test==null){
             userExist = false;
             Employe employe = new Employe(nom,prenom, Integer.parseInt(age),Integer.parseInt(id),sexe,email,adresse,post);
             employe.addEmploye();

@@ -49,6 +49,9 @@
         <c:if test="${userExist==true}">
             <p style="color: #792700">User deja existant.</p>
         </c:if>
+        <c:if test="${CINVerif==true}">
+            <p style="color: #792700">CIN doit etre 8 chiffres.</p>
+        </c:if>
         <c:if test="${employe!=null}">
             <form action="ServletUpdateEmploye" method="post">
         </c:if>
