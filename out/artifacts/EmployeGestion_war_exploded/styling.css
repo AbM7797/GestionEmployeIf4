@@ -1,0 +1,65 @@
+.body1
+{
+    margin: 0;
+    padding: 0;
+    background-image: url(theme/images/adminLogin.jpg);
+    background-size: cover;
+    font-family: sans-serif;
+
+}
+.login
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: 420px;
+    padding: 80px 40px;
+    box-sizing: border-box;
+    background: azure;
+}
+h2
+{
+    margin: 0;
+    padding: 0 0 20px;
+    color: #efed40;
+    text-align: center;
+}
+.button
+
+{
+    position: absolute;
+    top: 80%;
+    left: 30%;
+    color: blueviolet;
+}
+.body2
+{
+    background-color: #fdfdfd;
+}
+nav ul
+{
+    padding: 20px;
+    margin: 100px;
+    list-style-type: square;
+    background-color: chartreuse;
+}
+nav li
+{
+    display: inline-block;
+    width: 100px;
+    height: 40px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    line-height: 40px;
+}
+nav li a
+{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+
+
