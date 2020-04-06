@@ -17,9 +17,11 @@
     <input type="text"  name="username" placeholder="entrer le nom d'utilisateur" required>
     <p>Password</p>
     <input type="password" name="password" placeholder="entrer le mot de passe" required>
-    <br>
-    <br>
-    <br>
+
+    <c:if test="${wrong==true}">
+    <p style="color: red"> Either user name or password is wrong.</p>
+    </c:if>
+
     <input type="submit" class="button" value="Sign in ">
 
   </form>

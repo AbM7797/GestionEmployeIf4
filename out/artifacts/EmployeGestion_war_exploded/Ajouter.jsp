@@ -166,7 +166,7 @@
     .m-left
     {
         float: left;
-        padding-left: 0;
+
     }
     .m-right
     {
