@@ -1,0 +1,44 @@
+.naviguer
+{
+    width: 100%;
+    height: 66px;
+    line-height: 66px;
+    background: coral;
+
+
+
+}
+.inner
+{
+    width: 80%;
+    margin: auto;
+}
+.logo
+{
+    color: darkslategrey ;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-family: fantasy;
+    font-weight: 900;
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+.m-left
+{
+    float: left;
+
+}
+.m-right
+{
+    float: right;
+}.m-right a
+ {text-decoration: none;
+     color: firebrick;
+     text-transform: uppercase;
+     font-weight: 700;
+     padding: 0;
+     margin: 0 10px;
+
+
+ }

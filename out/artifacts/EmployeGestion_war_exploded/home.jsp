@@ -7,26 +7,18 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title> Gestion des employès </title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="theme/css/style.css">
+    <link rel="stylesheet" href="theme/css/headerStyle.css">
 </head>
 <body >
-
     <%
         if(session.getAttribute("user")==null){
             response.sendRedirect("index.jsp");
         }
     %>
-
     <%@include file="header.jsp" %>
-<br>
-<br>
-<br>
-
 <div class="container border">
     <h1>Les employées</h1>
 

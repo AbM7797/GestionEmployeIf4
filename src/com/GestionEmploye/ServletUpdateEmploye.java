@@ -21,34 +21,42 @@ public class ServletUpdateEmploye extends HttpServlet {
         String oldid = request.getParameter("oldid");
         String newId = request.getParameter("id");
         Employe test = new Employe().getEmploye(Integer.parseInt(newId));
-        Boolean userExist = false;
-        Boolean CINVerif = false;
         if(newId.length()!=8){
-            CINVerif = true;
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ajouter.jsp");
-            request.setAttribute("CINVerif",CINVerif);
+            Employe employe = new Employe(nom,prenom,Integer.parseInt(age),Integer.parseInt(oldid),sexe,email,adresse,post);
+            request.setAttribute("employe",employe);
+            request.setAttribute("CINVerif",true);
             rd.include(request, response);
         } else if(test==null || oldid.equals(newId) ){
-            userExist = false;
             Employe employe = new Employe(Integer.parseInt(oldid));
             employe.updateEmploye(nom,prenom,sexe,post,adresse,email,Integer.parseInt(age),Integer.parseInt(newId));
-            response.sendRedirect("home.jsp");
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/modifier.jsp");
+            request.setAttribute("SuccessUpdate",true);
+            rd.include(request,response);
         }else{
-            userExist = true;
+
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ajouter.jsp");
-            request.setAttribute("userExist",userExist);
+            request.setAttribute("userExist",true);
             rd.include(request, response);
         }
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        Employe employe = new Employe();
-        Employe employe1 = employe.getEmploye(id);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Ajouter.jsp");
-        request.setAttribute("employe",employe1);
-        dispatcher.forward(request,response);
+        if(request.getParameterMap().containsKey("id")){
+            int id = Integer.parseInt(request.getParameter("id"));
+            Employe employe = new Employe();
+            Employe employe1 = employe.getEmploye(id);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Ajouter.jsp");
+            request.setAttribute("employe",employe1);
+            dispatcher.forward(request,response);
+        }else{
+            response.sendRedirect("modifier.jsp");
+        }
+
+
+
+
 
     }
 }

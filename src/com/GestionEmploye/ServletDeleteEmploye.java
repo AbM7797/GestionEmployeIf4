@@ -1,5 +1,6 @@
 package com.GestionEmploye;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,10 +15,16 @@ public class ServletDeleteEmploye extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Delete Employe");
-        String id = request.getParameter("id");
-        Employe employe = new Employe(Integer.parseInt(id));
-        employe.deleteEmploye();
-        response.sendRedirect("supprimer.jsp");
+        if(request.getParameterMap().containsKey("id")){
+            String id = request.getParameter("id");
+            Employe employe = new Employe(Integer.parseInt(id));
+            employe.deleteEmploye();
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/supprimer.jsp");
+            request.setAttribute("SuccessDelete",true);
+            rd.include(request,response);
+        }else{
+            response.sendRedirect("supprimer.jsp");
+        }
+
     }
 }

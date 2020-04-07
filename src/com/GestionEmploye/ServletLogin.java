@@ -16,9 +16,7 @@ public class ServletLogin extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String user = request.getParameter("username");
         String pwd = request.getParameter("password");
-        Boolean wrong = false;
         if(userID.equals(user) && password.equals(pwd)){
-            wrong = false;
             HttpSession session = request.getSession();
             session.setAttribute("user", "Admin");
             //setting session to expiry in 30 mins
@@ -29,8 +27,7 @@ public class ServletLogin extends HttpServlet {
             response.sendRedirect("home.jsp");
         }else{
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/index.jsp");
-            wrong = true;
-            request.setAttribute("wrong",wrong);
+            request.setAttribute("wrong",true);
             rd.include(request, response);
         }
     }

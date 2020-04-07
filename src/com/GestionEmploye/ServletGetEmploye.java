@@ -17,7 +17,6 @@ public class ServletGetEmploye extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Employe employe = new Employe();
         List<Employe> employeList = employe.getAllEmployes();
-        System.out.println("Get Employe");
         response.sendRedirect("index.jsp");
     }
 }

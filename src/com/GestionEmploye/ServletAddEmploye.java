@@ -12,7 +12,6 @@ import java.io.IOException;
 @WebServlet("/ServletAddEmploye")
 public class ServletAddEmploye extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Add Employe");
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");
         String age = request.getParameter("age");
@@ -22,22 +21,20 @@ public class ServletAddEmploye extends HttpServlet {
         String post = request.getParameter("post");
         String id = request.getParameter("id");
         Employe test = new Employe().getEmploye(Integer.parseInt(id));
-        Boolean userExist = false;
-        Boolean CINVerif = false;
         if(id.length()!=8){
-            CINVerif = true;
+
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ajouter.jsp");
-            request.setAttribute("CINVerif",CINVerif);
+            request.setAttribute("CINVerif",true);
             rd.include(request, response);
         } else if(test==null){
-            userExist = false;
             Employe employe = new Employe(nom,prenom, Integer.parseInt(age),Integer.parseInt(id),sexe,email,adresse,post);
             employe.addEmploye();
-            response.sendRedirect("home.jsp");
-        }else{
-            userExist = true;
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ajouter.jsp");
-            request.setAttribute("userExist",userExist);
+            request.setAttribute("SuccessAdd",true);
+            rd.include(request,response);
+        }else{
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ajouter.jsp");
+            request.setAttribute("userExist",true);
             rd.include(request, response);
         }
 

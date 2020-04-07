@@ -4,12 +4,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Document</title>
+    <link rel="stylesheet" href="theme/css/ajoutStyle.css">
+    <link rel="stylesheet" href="theme/css/headerStyle.css">
+    <title>Gestion des employès</title>
 </head>
 <body>
 <%
@@ -18,9 +17,7 @@
     }
 %>
 <%@include file="header.jsp" %>
-<br>
-<br>
-<br>
+
 <div class="container form">
     <h1>
         <c:if test="${employe != null}">
@@ -33,10 +30,14 @@
     </h1>
     <div >
         <c:if test="${userExist==true}">
-            <p style="color: #792700">User deja existant.</p>
+            <p style="color: #792700">Employé deja existant.</p>
         </c:if>
         <c:if test="${CINVerif==true}">
             <p style="color: #792700">CIN doit etre 8 chiffres.</p>
+        </c:if>
+
+        <c:if test="${SuccessAdd==true}">
+            <p style="color: green">Employé est bien enregistré!</p>
         </c:if>
         <c:if test="${employe!=null}">
             <form action="ServletUpdateEmploye" method="post">
@@ -85,102 +86,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 </body>
-<style>
-    body
-    {
-        margin: 0;
-        padding: 0;
-        background-image: url(theme/images/two-women-standing-beside-brown-board-on-wall-3184296.jpg);
-        -webkit-background-size: cover;
-        background-size: cover;
-        font-family: Arial, Helvetica, sans-serif;
 
-    }
-    .form
-    {
-        position: absolute;
-        top: 45%;
-        left: 50%;
-        transform: translate(-50% , -50%);
-        width: 500px;
-        height: 750px;
-        margin-top: 150px;
-        box-sizing: border-box;
-        background-color: rgba(78, 77, 77, 0.5);
-        padding: 40px;
-        border-radius: 15px;
-        border: 1px solid #ffffff;
-
-    }
-    .form h3
-    {
-        margin: 0;
-        padding: 0 0 20px;
-        font-weight: bold;
-        color: white;
-        text-align: center;
-
-    }
-    .form p
-    {
-        margin: 0;
-        padding: 0;
-        font-weight: bold;
-        color: white;
-        text-align: center;
-    }
-    .form input {
-        margin-bottom: 20px;
-        width: 100%;
-
-    }
-
-    .naviguer
-    {
-        width: 100%;
-        height: 66px;
-        line-height: 66px;
-        background: coral;
-
-
-
-    }
-    .inner
-    {
-        width: 80%;
-        margin: auto;
-    }
-    .logo
-    {
-        color: darkslategrey ;
-        margin: 0;
-        padding: 0;
-        text-transform: uppercase;
-        font-family: fantasy;
-        font-weight: 900;
-        font-size: 30px;
-        letter-spacing: 1px;
-    }
-    .m-left
-    {
-        float: left;
-
-    }
-    .m-right
-    {
-        float: right;
-    }.m-right a
-     {text-decoration: none;
-         color: firebrick;
-         text-transform: uppercase;
-         font-weight: 700;
-         padding: 0;
-         margin: 0 10px;
-
-
-     }
-
-</style>
 </html>
 
 
