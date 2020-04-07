@@ -30,7 +30,7 @@
     </h1>
     <div >
         <c:if test="${userExist==true}">
-            <p style="color: #792700">Employé deja existant.</p>
+            <p style="color: #792700">Employé deja existant.Verifier le numéro du votre CIN!</p>
         </c:if>
         <c:if test="${CINVerif==true}">
             <p style="color: #792700">CIN doit etre 8 chiffres.</p>

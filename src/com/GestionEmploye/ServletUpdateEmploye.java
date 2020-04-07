@@ -34,8 +34,9 @@ public class ServletUpdateEmploye extends HttpServlet {
             request.setAttribute("SuccessUpdate",true);
             rd.include(request,response);
         }else{
-
             RequestDispatcher rd = getServletContext().getRequestDispatcher("/Ajouter.jsp");
+            Employe employe = new Employe(nom,prenom,Integer.parseInt(age),Integer.parseInt(oldid),sexe,email,adresse,post);
+            request.setAttribute("employe",employe);
             request.setAttribute("userExist",true);
             rd.include(request, response);
         }
