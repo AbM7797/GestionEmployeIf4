@@ -23,7 +23,6 @@ public class ServletAddEmploye extends HttpServlet {
         String id = request.getParameter("id");
         Employe test = new Employe().getEmploye(Integer.parseInt(id));
         Boolean userExist = false;
-        System.out.println(id.length());
         Boolean CINVerif = false;
         if(id.length()!=8){
             CINVerif = true;
